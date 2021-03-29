@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <title></title>
+    <style>
+        .news_body{
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        h3{
+            padding: 10px 0 10px 0;
+        }
+        .from{
+            color:#696969;
+            font-size: 80%;
+            text-align:center;
+        }
+        p{
+            line-height: 30px;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+        .ly_time{
+            color:#696969;
+            font-size: 80%;
+            text-align:center;
+            margin-bottom: 10px;
+        }
+        .btm{
+            background: #1886D3;
+            padding: 10px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 24px;
+            margin-top: 15px;
+            text-align:center;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            color: black;
+        }
+        .list{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 95%;
+            height: 90px;
+            margin: 0 auto;
+            margin-top: 5px;
+            padding: 4px 0 4px 0;
+            border-bottom: 1px solid lightgray;
+            position: relative;
+        }
+        .listL{
+            flex: 1;
+            height: 95%;
+
+            position: relative;
+        }
+        .til{
+            font-size: 18px;
+            letter-spacing: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;  /*要显示的行数*/
+            -webkit-box-orient: vertical;
+
+        }
+        .tim{
+            color: gray;
+            font-size: 14px;
+            margin-top: 4px;
+            display: flex;
+          align-items: flex-end;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+
+        }
+        .imgcon{
+            width: 30%;
+            height: 95%;
+            margin-left: 4px;
+        }
+        .imgcon img{
+            width: 100%;
+            height: 100%;
+            object-fit:cover
+        }
+        .tils{
+            font-weight: bolder;
+            font-size: 20px;
+            width: 95%;
+            margin: 0 auto;
+            margin-top: 18 px;
+        }
+        .ad{
+            margin: 0 auto;
+            border-bottom: 1px solid lightgray;
+        }
+
+        #continer .List{
+            width: 97%;
+            margin: 0 auto;
+            padding: 10px 0 10px 0;
+            border: 1px solid lightgray;
+            margin-top: 15px;
+            border-radius: 10px;
+
+
+        }
+        #continer .videoList{
+            width: 92%;
+            display: flex;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-top: 8px;
+            padding-bottom: 15px;
+            background: #F6F6F8;
+            color:#939395;
+
+        }
+        #continer .videoList img{
+            height: 70%;
+
+
+        }
+        #continer .til,#continer .tim{
+            width: 92%;
+            margin: 0 auto;
+        }
+        #continer .til{
+            font-weight: bolder;
+            color: black;
+        }
+        #continer .tim{
+            font-size: 15px;
+            color: gray;
+        }
+        #continer .time{
+            font-size: 14px;
+        }
+        #continer .jdt{
+            width: 90%;
+            height: 5px;
+            background: #d9d9d9;
+            overflow:hidden;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-bottom: 5px;
+        }
+        #continer .duc{
+            width: 0;
+            height: 100%;
+            background:#1886d3;
+            position: relative;
+        }
+        #continer .dot{
+            position: absolute;
+            right: -4.5px;
+            height: 9px;
+            width:9px;
+            top: -2px;
+            border-radius: 50%;
+
+            background: #1886d3;
+        }
+
+        #continer .bb{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 50px;
+        }
+        #continer .ti{
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+        #continer .lstL{
+            width: 80%;
+        }
+        #continer .lstr{
+            width: 20%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        #continer .lstr img{
+            width: 12vw;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+	// 腾讯广告全局申明只需运行一次
+	window.TencentGDT = window.TencentGDT || [];
+
+    // 广告示例声明
+	TencentGDT.push({
+		app_id: '1111436687',
+		placement_id: '4091765255188137', // 广告位id，请从联盟平台广告位获取
+		type: 'native', // 广告类型
+        display_type: 'banner', // 广告播放类型: banner广告
+        carousel: 6000, // 轮播时间，> 3000数字类型，否则轮播会被取消
+        containerid: 'banner_2_0', // 广告容器
+		onComplete: function(res) {
+        	if (res.ret == 0) {
+				console.log('广告播放成功');
+        	} else {
+				console.log('广告播放失败');
+			}
+		}
+	});
+
+	// 广告初始化
+	window.TencentGDT.push({
+		app_id: '1111436687', // {String} - appid - 必填
+		placement_id: '9041365215050423', // {String} - 广告位id - 必填
+		type: 'native', // {String} - 原生广告类型 - 必填
+		muid_type: '1', // {String} - 移动终端标识类型，1：imei，2：idfa，3：mac号 - 选填
+		muid: '******', // {String} - 加密终端标识，详细加密算法见API说明 -  选填
+		count: 3, // {Number} - 拉取广告的数量，默认是3，最高支持10 - 选填
+		onComplete: function(res) {
+			if (res && res.constructor === Array) {
+				// 原生模板广告位调用 window.TencentGDT.NATIVE.renderAd(res[0], 'containerId') 进行模板广告的渲染
+				// res[0] 代表取广告数组第一个数据
+				// containerId：广告容器ID
+				window.TencentGDT.NATIVE.renderAd(res[0], 'native_ad_1');
+				window.TencentGDT.NATIVE.renderAd(res[1], 'native_ad_2');
+				window.TencentGDT.NATIVE.renderAd(res[2], 'native_ad_3');
+			} else {
+				// 加载广告API，如广告回调无广告，可使用loadAd再次拉取广告
+				// 注意：拉取广告频率每分钟不要超过20次，否则会被广告接口过滤，影响广告位填充率
+				setTimeout(function() {
+					window.TencentGDT.NATIVE.loadAd('9041365215050423')
+				}, 3000)
+			}
+		}
+	});
+
+	// H5 SDK接入全局只需运行一次
+	(function () {
+		var doc = document,
+		h = doc.getElementsByTagName('head')[0],
+		s = doc.createElement('script');
+		s.async = true;
+		s.src = '//qzs.qq.com/qzone/biz/res/i.js';
+		h && h.insertBefore(s, h.firstChild);
+	})();
+</script>
+<div class="_oydtsmic4rb"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6472336",
+        container: "_oydtsmic4rb",
+        async: true
+    });
+</script>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+</script>
+
+<div class="news_body">
+<h3 align="center">200年前怎么闹元宵？诗歌有话说</h3>
+<div class="ly_time">来源：  新华网 | 发布时间：  2021-02-26 16:38 </div>
+<div id="continer">
+    <div class="List">
+     <div class="videoList">
+        <div class="lstL" onclick="toGplay()">
+    <video style="display: none;" controls x5-playsinline="" playsinline="" webkit-playsinline="">
+     <source src="https://vodpub2.v.news.cn/publish/yhaudio/20210226/7879cd3d-b45f-4abc-85b6-0e8da049befc.mp3" type="audio/mp3">
+     </video>
+     <div class="conleft"></div>
+     <div class="bb">
+     <div class="til">
+         听新闻，请点我！
+     </div>
+    </div>
+     <div class="jdt">
+        <div class="duc"><div class="dot"></div></div>
+    </div>
+    <div class="ti">
+        <span class="time">00:00:00</span><span class="time">08:05</span>
+    </div>
+</div>
+    <div class="lstr">
+        <img id="pla" onclick="toPlay(this)" src="http://weface-temp.oss-cn-shanghai.aliyuncs.com/news/play1.png" alt="">
+    </div>
+</div>
+    </div>
+    </div><br>
+<p align="center"><strong><font color="navy">细马轻车巷陌腾，好春又是一番增。今宵闲杀团圆月，多少游人只看灯。 人海中间是乐棚，琉璃千点火珠明。金吾抵死催人去，夜半天街打五更。</font></strong></p><p align="center" style="TEXT-ALIGN: center"><img border="0" id="{6A6BB587-49D7-4EDC-A64A-DBC77926CDB4}" sourcedescription="编辑提供的本地文件" sourcename="本地文件" src="http://www.xinhuanet.com/video/2021-02/26/1211042451_16143286065171n.jpg" style="HEIGHT: 300px; WIDTH: 300px" title=""/></p>
+<p></p>
+<p>    【片头音乐】</p>
+<p>    诗歌有话说，今日话元宵。</p>
+<p>    【旁白】</p>
+<p>    元夕前门观灯——梁同书</p>
+<p>    细马轻车巷陌腾，好春又是一番增。今宵闲杀团圆月，多少游人只看灯。</p>
+<p>    人海中间是乐棚，琉璃千点火珠明。金吾抵死催人去，夜半天街打五更。</p>
+<p>    市门几处郁嵯峨，踏月人归缓缓歌。纸鼓铜环儿女戏，一份春色太平多。</p>
+<p>    【旁白】这首诗的作者是清乾隆年间翰林院侍讲梁同书，他的父亲是一代名臣、一代大书法家梁诗正。虽然家世显赫，但这位少年从小就不“拼爹”，反而帮他爹代写书法，以应付上门求字的各路达官显贵。长大后的梁同书在书法领域颇有成就，成为 “清四大家”之一。鲁迅先生小时候就读的“三味书屋”的牌匾就是由他所题。</p>
+<p>    梁同书清正廉洁、十分节俭，留京当官时，喜欢与民同乐。这一年元宵节晚上八点，他又要出门了。</p>
+<p>    第一幕 家门口</p>
+<p>    【音效】开门声</p>
+<p>    【角色B-孙女】爷爷，您要去哪里啊？</p>
+<p>    【角色A-梁同书】元宵节宫里放了三天假，我打算去前门看看灯。</p>
+<p>    【角色B-孙女】爷爷，我也好想去啊……</p>
+<p>    【角色A-梁同书】你呀，天天想着出去玩。跟我走吧。</p>
+<p>    【音效】脚步声渐弱</p>
+<p></p>
+<p>    第二幕 廊房头条胡同</p>
+<p>    【音效】古代街道热闹的叫卖声</p>
+<p>    【角色B-孙女】爷爷，这条街上的灯笼怎么特别多啊？</p>
+<p>    【角色A-梁同书】这就是京城的“灯笼一条街”廊房头条。你看前面的文盛斋、华美斋、秀珍斋这些名冠京师的灯笼铺都把自家的灯笼挂出来了。</p>
+<p>    【角色B-孙女】这么多灯笼把天都照亮了！可是为什么它们长的都不一样啊？</p>
+<p>    【角色A-梁同书】你看我们头顶挂着的这种蒙红纱或白纱的叫圆纱灯，红色一般是喜庆宴会用的，白色主要是观赏花灯，灯上画的是人物花鸟鱼虫水墨画，也有题诗书法。</p>
+<p>    【角色B-孙女】那这个上面有灯谜吗？</p>
+<p>    【角色A-梁同书】有，你看这个灯谜谜面写的是“元宵前后共团圆 （打一字）”，你猜猜什么字啊？</p>
+<p>    【角色B-孙女】元宵……团圆……太难了，爷爷，我想不出来。</p>
+<p>    【角色A-梁同书】哈哈，谜底啊我猜是期盼的“期”，因为“元宵”二字前后部分分别为“二月”，“二月”与“共”加在一起就是“期”字啦。</p>
+<p>    【角色C-灯笼店家】客官猜的没错，谜底确实是“期”，那这个灯笼就送您了。</p>
+<p>    【角色B-孙女】谢谢婶婶，我要把它带回去考考我阿娘。</p>
+<p>    【角色C-灯笼店家】小姑娘，这是走马灯，拿好了，回家记得挂起来。</p>
+<p>    【角色B-孙女】为什么一定要挂起来呢？</p>
+<p>    【角色A-梁同书】这些灯长得不一样，使用方法也不同。你看这种莲花荷叶、花篮盆景的就得挂着；各色人物、击鼓摇铃的只能举着；如果是绣球灯啊，还得滚着呢。</p>
+<p>    【角色C-灯笼店家】是啊，我们这有各种灯笼，你看这种雕成小鸟的冰花灯，小朋友，你要不要买一个带回去给你阿娘看看呀？</p>
+<p>    【角色A-梁同书】不了不了，我们一会还要逛街呢，不方便提着那么多灯笼。小杏子，快跟上。</p>
+<p>    【音效】脚步声</p>
+<p></p>
+<p>    第三幕 小巷</p>
+<p>    【音效】“吁”勒马嘶叫声</p>
+<p>    【角色B-孙女】爷爷，小心马。</p>
+<p>    【角色D-马车夫】哎呀，对不住对不住，我家夫人赶着去乐棚听曲，冒犯了。</p>
+<p>    【角色A-梁同书】无妨无妨。</p>
+<p>    【角色B-孙女】什么，听曲？爷爷，那我们也去看看吧。</p>
+<p></p>
+<p>    第四幕 乐棚</p>
+<p>    【音效】丝竹乐声</p>
+<p>    【角色A-梁同书】这就是乐棚了，每到元宵节，这些民间艺人就会在这样的彩棚里进行表演。</p>
+<p>    【角色B-孙女】爷爷，快抱我上去看看，我看不见。</p>
+<p>    【角色A-梁同书】这里人太多了你就别往里挤了，带你去看前面的杂技戏法吧。</p>
+<p>    【角色B-孙女】还有戏法呢？爷爷，快走快走。</p>
+<p>    【音效】脚步声</p>
+<p></p>
+<p>    第五幕 戏法摊</p>
+<p>    【音效】人群叫好声、老鼠叫声</p>
+<p>    【角色B-孙女】哎呀，爷爷，地上有老鼠。</p>
+<p>    【角色A-梁同书】别怕，那是耍耗子戏法的道具。</p>
+<p>    【角色B-孙女】耗子戏法是什么啊？</p>
+<p>    【角色A-梁同书】就是在水箱上绑一个横架，让这些训练有素的小老鼠在上面表演喝水、钻圈。一会还有耍猴儿表演，就是在木箱子里面藏着乌纱帽，猴子自己开箱倒柜穿戴好以后，就学人的样子，有模有样地升堂坐衙。除了这些，还有扶犁、苟利子、演唱打虎杂剧很多种戏法呢。</p>
+<p>    【角色B-孙女】哇~真好玩，爷爷，那我们多看一会吧。</p>
+<p></p>
+<p>    第六幕 回家</p>
+<p>    【音效】打更声</p>
+<p>    【角色A-梁同书】五更天了，咱们得回家了。</p>
+<p>    【音效】脚步声、开门声</p>
+<p>    【角色B-孙女】终于到家了。（打了个哈欠）爷爷，我好困啊。</p>
+<p>    【角色A-梁同书】那你赶紧去睡吧，爷爷得先把这太平盛世的见闻都记下来，题目干脆就叫《元夕前门观灯》吧。</p>
+<p></p>
+<p>    【旁白】这就是今天的《诗歌有话说——元夕前门观灯》，梁同书笔下的前门在元宵夜有灯、有曲、有戏、有人，盛况空前，简直是不收门票的京城欢乐谷、灯艺博览会。二百多年后的今天，虽然因为防疫庙会取消、繁华灯市踪影难寻，但在这个特殊的元宵节，陪孩子做一只花灯猜一次灯谜、为家人煮一碗元宵，就是满满的团圆味道。</p>
+<br><div class="from">以上内容由"新华网"发布 <a rel="external nofollow" target="_blank" href="http://www.xinhuanet.com/video/2021-02/26/c_1211042451.htm">查看原文</a></div>
+</div>
+<br>
+
+<div id = "native_ad_1">
+
+</div>
+
+<br>
+
+    <div class="wrap">
+    <div class="tils">热点新闻推荐</div>
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=ffe3c27fe914f4511d21308c6113b5e2&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">新华国际时评：事实如铁，中国人权成就不容抹黑</div>
+                        <div class="tim">新华网&nbsp;&nbsp;&nbsp;&nbsp;1小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/26ccce9904c04b058e5301eaf1ab82f8_title0h.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=6c5f8ed0ffc6435f820bf129f8911d0a&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">美军对叙利亚发动空袭 由拜登下令实施</div>
+                        <div class="tim">新华网&nbsp;&nbsp;&nbsp;&nbsp;7小时前</div>
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=702c8a0eb32bcb0cb27a1cd3aea36928&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">义务教育教师工资落实不到位将被追责</div>
+                        <div class="tim">新华社“新华视点”微博&nbsp;&nbsp;&nbsp;&nbsp;8小时前</div>
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        <div class="ad" id = "native_ad_2">
+
+        </div>
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=7a5f787e2c491cbc79d7e3d803fefd0a&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">国台办：大陆暂停进口台湾菠萝是正常生物安全防范举措</div>
+                        <div class="tim">新华网&nbsp;&nbsp;&nbsp;&nbsp;8小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/1526373298f042a980b49cc4a8ed4565_title0h.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=9438232b51600e217fb06dc3b42ec6e1&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">交通运输部回应网约车订单计费不准：督促平台精准计程计时计价</div>
+                        <div class="tim">新华社“新华视点”微博&nbsp;&nbsp;&nbsp;&nbsp;8小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/b9cb9e51c6964692ab176d0dbd34d018_title0h.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=441653b74b818f8ed4718e43bfcd8e1b&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">司机们注意了！元宵节全国夜查酒驾醉驾 </div>
+                        <div class="tim">新华社“新华视点”微博&nbsp;&nbsp;&nbsp;&nbsp;8小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/97d1b07e8a97439ab14d6b90ac02485e_title0h.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=bfa1c429d0e81df1a14396d980a581d6&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">人社部正在会同相关部门研究具体的延迟退休改革方案</div>
+                        <div class="tim">新华社“新华视点”微博&nbsp;&nbsp;&nbsp;&nbsp;8小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/40697bc999fc4654a514d13319b7f553_title0h.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        <div class="ad" id = "native_ad_3">
+
+        </div>
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=1e466a34b8c4eddec7f125f9a018f703&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">“上岗”近2个月频遭吐槽，纸吸管到底哪儿不对劲？</div>
+                        <div class="tim">新华网&nbsp;&nbsp;&nbsp;&nbsp;9小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/2839c4fa7ed849d992e975c611073a26_title0h.png" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="http://education.news.cn/2021-02/26/c_1211041505.htm">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">34所自主划线院校考研初试成绩查询时间陆续公布</div>
+                        <div class="tim">新华网&nbsp;&nbsp;&nbsp;&nbsp;10小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/26/b935f034cfee4082af0b0c2caedd8418_title0h.png" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+        
+        
+        
+        
+            <a href="https://kk.weface.com.cn/news/page?id=80633d0cca66fcd54580e4318e605a15&amp;type=hot">
+                <div class="list" >
+                    <div class="listL">
+                        <div class="til">致敬！向平凡而伟大的战贫英雄 </div>
+                        <div class="tim">新华社&nbsp;&nbsp;&nbsp;&nbsp;20小时前</div>
+                    </div>
+                    <div class="imgcon" >
+                        <img src="http://www.news.cn/titlepic/bangdan/2021-2/25/6f4644cdd64840108267a7ef31e3719c_title0h.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        
+    
+    </div>
+
+<div class="btm">
+        新闻信息及图片来源于网络<br>
+    如侵犯了您的权益或版权，请及时告知我们予以删除！
+</div>
+
+</body>
+<script>
+    function formatSeconds(seconds) {
+        let hour = Math.floor(seconds / 3600) >= 10 ? Math.floor(seconds / 3600) : '0' + Math.floor(seconds / 3600);
+            seconds -= 3600 * hour;
+            let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+            seconds -= 60 * min;
+            let sec = seconds >= 10 ? seconds : '0' + seconds;
+            if(hour > 0) {
+                return hour + ':' + min + ':' + sec;
+            }
+            else {
+                return min + ':' + sec;
+            }
+    }
+function toPlay(s){
+    if(s.parentNode.parentNode.querySelector("video").paused){
+        s.src="http://weface-temp.oss-cn-shanghai.aliyuncs.com/news/pause.gif"
+        s.parentNode.parentNode.querySelector("video").play()
+
+
+        s.Timer=setInterval(res=>{
+            console.log(111)
+            let num=Math.ceil(s.parentNode.parentNode.querySelector("video").currentTime)
+            let maxnum=Math.ceil(s.parentNode.parentNode.querySelector("video").duration)
+           let ce=(s.parentNode.parentNode.querySelector("video").currentTime/s.parentNode.parentNode.querySelector("video").duration)*100
+           s.parentNode.parentNode.querySelector(".duc").style.width=ce+"%"
+           s.parentNode.parentNode.querySelector(".time").innerHTML=formatSeconds(num)
+           if(num==maxnum){
+             s.src="http://weface-temp.oss-cn-shanghai.aliyuncs.com/news/play1.png"
+             clearInterval(s.Timer)
+           }
+        },1000)
+    }else{
+        clearInterval(s.Timer)
+        s.src="http://weface-temp.oss-cn-shanghai.aliyuncs.com/news/play1.png"
+        s.parentNode.parentNode.querySelector("video").pause()
+    }
+    s.parentNode.parentNode.querySelector(".jdt").onclick=function(e){
+        var event = event || window.event;
+        var left = event.clientX - this.offsetLeft;
+        var vidoelength=s.parentNode.parentNode.querySelector("video").duration
+        s.parentNode.parentNode.querySelector(".duc").style.width=left+"px"
+        var jdtWidth=s.parentNode.parentNode.querySelector(".jdt").offsetWidth
+        s.parentNode.parentNode.querySelector("video").currentTime=(left/jdtWidth)*vidoelength
+    }
+
+}
+function toGplay(){
+    document.querySelector("#pla").click()
+}
+</script>
+</html>
